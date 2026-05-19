@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>123MOVIES - Watch Movies Online Free</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="google-site-verification" content="tmQ24EriiF2aUay-VOPs1yKG9UCEvToL40h5tB7vV3A" />
+    <meta name="description" content="Watch the latest movies online for free on 123MOVIES. Stream action, comedy, drama, and more in HD quality without registration.">
+    <meta name="keywords" content="123movies, watch movies online, free movies online, stream movies, HD movies free, movie streaming">
+    <link rel="canonical" href="index.html">
+    <link rel="stylesheet" href="style.css?v=2.3">
+    <style>
+        /* Premium AdBlock UI */
+        #adblockOverlay {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: rgba(5, 5, 5, 0.95) !important;
+            backdrop-filter: blur(25px) saturate(180%) !important;
+            z-index: 9999999 !important;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        #adblockOverlay.active {
+            display: flex !important;
+            opacity: 1 !important;
+        }
+
+        .premium-popup {
+            background: rgba(20, 20, 20, 0.7) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 40px !important;
+            padding: 4rem 3rem !important;
+            max-width: 550px !important;
+            width: 90% !important;
+            text-align: center !important;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), 
+                        0 0 40px rgba(46, 204, 113, 0.1) !important;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        #adblockOverlay.active .premium-popup {
+            transform: translateY(0) scale(1) !important;
+        }
+
+        .premium-popup::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(46, 204, 113, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .block-icon-container {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent-color), #27ae60);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2.5rem;
+            font-size: 3.5rem;
+            box-shadow: 0 20px 40px rgba(46, 204, 113, 0.3);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .premium-popup h2 {
+            font-size: 2.8rem !important;
+            font-weight: 900 !important;
+            margin-bottom: 1.5rem !important;
+            background: linear-gradient(to bottom, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .premium-popup p {
+            color: var(--text-secondary) !important;
+            font-size: 1.2rem !important;
+            line-height: 1.8 !important;
+            margin-bottom: 3rem !important;
+            padding: 0 1rem;
+        }
+
+        .btn-modern-refresh {
+            background: #fff !important;
+            color: #000 !important;
+            border: none !important;
+            padding: 1.2rem 3.5rem !important;
+            border-radius: 100px !important;
+            font-size: 1.1rem !important;
+            font-weight: 900 !important;
+            cursor: pointer !important;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .btn-modern-refresh:hover {
+            transform: scale(1.05) translateY(-3px) !important;
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.3) !important;
+            background: var(--accent-color) !important;
+        }
+
+        .content-blur-premium {
+            filter: blur(20px) brightness(0.3) !important;
+            pointer-events: none !important;
+            transition: filter 1s ease !important;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">
+                123M <div class="play-icon">▶</div> VIES
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search movies...">
+                <button id="searchButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+                <div id="searchSuggestions" class="search-suggestions"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="movie-grid" id="movieGrid">
+            <!-- Movies are generated dynamically from MOVIE_DATABASE in main.js -->
+        </div>
+        
+        <div id="comingSoonPlaceholders" style="display: none;">
+            <!-- Coming soon placeholders template -->
+        </div>
+
+        <div class="see-more-container">
+            <button class="btn-see-more">See more</button>
+        </div>
+    </main>
+
+    <!-- Adblocker Detection UI -->
+    <div class="ad-zone-bait adsbox ad-placement ad-unit ad-zone"></div>
+    <div id="adblockOverlay">
+        <div class="premium-popup">
+            <div class="block-icon-container">🚫</div>
+            <h2>AdBlock Detected!</h2>
+            <p>Please disable your adblocker to continue. We use a few ads to keep our movie library free for everyone.</p>
+            <button class="btn-modern-refresh" id="refreshBtn">I've disabled it, Refresh</button>
+        </div>
+    </div>
+
+    <script src="main.js?v=2.3"></script>
+</body>
+</html>
+

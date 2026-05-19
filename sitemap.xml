@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Home Page -->
+    <url>
+        <loc>https://123movie.free.nf/</loc>
+        <lastmod>2026-05-08</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <!-- John Wick (2014) -->
+    <url>
+        <loc>https://123movie.free.nf/john-wick.html</loc>
+        <lastmod>2026-05-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- John Wick: Chapter 2 -->
+    <url>
+        <loc>https://123movie.free.nf/john-wick-2.html</loc>
+        <lastmod>2026-05-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- John Wick: Chapter 3 - Parabellum -->
+    <url>
+        <loc>https://123movie.free.nf/john-wick-3.html</loc>
+        <lastmod>2026-05-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- John Wick: Chapter 4 -->
+    <url>
+        <loc>https://123movie.free.nf/john-wick-4.html</loc>
+        <lastmod>2026-05-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- Michael (2026) -->
+    <url>
+        <loc>https://123movie.free.nf/michael.html</loc>
+        <lastmod>2026-05-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- Swapped (2026) -->
+    <url>
+        <loc>https://123movie.free.nf/swapped.html</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- The Godfather (1972) -->
+    <url>
+        <loc>https://123movie.free.nf/the-godfather.html</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- Shelter (2026) -->
+    <url>
+        <loc>https://123movie.free.nf/shelter.html</loc>
+        <lastmod>2026-05-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>

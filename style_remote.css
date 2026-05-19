@@ -1,0 +1,425 @@
+/*
+Theme Name: 123Movies Custom Theme
+Theme URI: http://example.com/
+Author: Antigravity
+Description: A modern, high-end movie streaming theme with a dark mode grid and integrated player page.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: 123movies
+*/
+
+:root {
+    --bg-color: #0a0a0a;
+    --card-bg: #1a1a1a;
+    --accent-color: #2ecc71;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --header-bg: #000000;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--header-bg);
+    padding: 1.5rem 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.logo span {
+    color: var(--accent-color);
+}
+
+.play-icon {
+    background-color: var(--accent-color);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    padding-left: 4px;
+}
+
+/* Grid Layout */
+.container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1rem;
+    }
+    .container {
+        padding: 0 1rem;
+        margin: 1.5rem auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on very small screens */
+        gap: 0.8rem;
+    }
+}
+
+/* Card Styles */
+.movie-card {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    aspect-ratio: 2 / 3;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This ensures the image fits perfectly regardless of size */
+    transition: var(--transition);
+}
+
+.movie-card:hover img {
+    transform: scale(1.05);
+}
+
+.movie-card .cover-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-weight: bold;
+}
+
+.movie-card .info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 1.5rem 1.5rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    transform: translateY(20px);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.movie-card:hover .info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Button Styles */
+.see-more-container {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.btn-see-more {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-see-more:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* Player Page Styles */
+.player-layout {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.ad-sidebar {
+    flex: 0 0 300px;
+    background: var(--glass-bg);
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: fit-content;
+}
+
+.ad-placeholder {
+    background: #111;
+    border: 1px dashed #333;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+    font-weight: bold;
+    min-height: 250px;
+}
+
+.main-player-section {
+    flex: 1;
+}
+
+.video-container {
+    background: #000;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.movie-details {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: var(--glass-bg);
+    border-radius: 24px;
+}
+
+.movie-details h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.movie-details p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+@media (max-width: 1200px) {
+    .player-layout {
+        flex-direction: column;
+    }
+    .ad-sidebar {
+        flex: 1;
+        flex-direction: row;
+    }
+    .ad-placeholder {
+        flex: 1;
+    }
+}
+.ad-container-horizontal {
+    background: var(--glass-bg);
+    border-radius: 15px;
+    padding: 1rem;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.ad-placeholder {
+    color: #444;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Server Switcher Styles */
+.server-btn {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.server-btn::before {
+    content: '🌐';
+    font-size: 1rem;
+}
+
+.server-btn:hover {
+    background: rgba(46, 204, 113, 0.1);
+    border-color: var(--accent-color);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(46, 204, 113, 0.2);
+}
+
+.server-btn.active {
+    background: linear-gradient(135deg, var(--accent-color), #27ae60);
+    border-color: transparent;
+    color: #000;
+    box-shadow: 0 0 25px rgba(46, 204, 113, 0.6);
+}
+
+/* Adblocker Detection Styles */
+.adblock-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.adblock-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.adblock-popup {
+    background: linear-gradient(145deg, #1a1a1a, #111);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 3rem;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.adblock-overlay.active .adblock-popup {
+    transform: scale(1);
+}
+
+.adblock-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: #ff4757;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.adblock-popup h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
+}
+
+.adblock-popup p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.btn-refresh {
+    background: var(--accent-color);
+    color: #000;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-refresh:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+}
+
+/* Blur effect for main content */
+.content-blur {
+    filter: blur(8px);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Bait element (hidden) */
+.ad-zone-bait {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+}
+
